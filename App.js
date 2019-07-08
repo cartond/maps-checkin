@@ -6,54 +6,30 @@
  * @flow
  */
 
-import React, {Component} from 'react';
-import {Button, StyleSheet, Text, View, TextInput} from 'react-native';
+import React, { Component } from 'react';
+import { StyleSheet, View } from 'react-native';
+
+import ListItem from './src/components/ListItem/ListItem'
+import PlaceInput from './src/components/Input/PlaceInput/PlaceInput'
 
 export default class App extends Component {
   state = {
-    placeName: '',
     places: []
   }
 
-  placeNameChangedHandler = (placeName) => {
-    this.setState({placeName})
-  }
-
-  placeSubmitHandler = () => {
-    if(this.state.placeName.trim() === ""){
-      return;
-    }
-
+  placeAddedHandler = placeName => {
     this.setState(prevState => {
       return {
-        places: prevState.places.concat(this.state.placeName.trim())
+        places: prevState.places.concat(placeName)
       }
-    })
-  }
+    });
+  };
 
   render() {
-    const placesOutput = this.state.places.map((place, i) => 
-      <Text key={i}>{place}</Text>
-    )
     return (
       <View style={styles.container}>
-        <View style={styles.inputContainer}>
-          <TextInput 
-            style={styles.placeInput}
-            value={this.state.placeName}
-            onChangeText={this.placeNameChangedHandler}
-            placeholder="Just Type"
-            />
-          <Button
-           style={styles.placeButton}
-            onPress={this.placeSubmitHandler}
-            title="Learn More"
-            accessibilityLabel="Learn more about this purple button"
-          />
-        </View>
-        <View>
-          {placesOutput}
-        </View>
+        <PlaceInput onPlaceAdded={this.placeAddedHandler} />
+        <ListItem places={this.state.places} />
       </View>
     );
   }
@@ -69,17 +45,8 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: "center",
   },
-  inputContainer: {
-    // flex: 1,
-    width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center'
-  },
-  placeInput: {
-    width: '70%'
-  },
-  placeButton: {
-    width: '30%'
+
+  listContainer: {
+    width: '100%'
   }
 });
