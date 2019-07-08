@@ -1,27 +1,19 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
+import React, { Component } from "react";
+import { StyleSheet, View } from "react-native";
 
-import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
-
-import ListItem from './src/components/ListItem/ListItem'
-import PlaceInput from './src/components/Input/PlaceInput/PlaceInput'
+import PlaceInput from "./src/components/PlaceInput/PlaceInput";
+import PlaceList from "./src/components/PlaceList/PlaceList";
 
 export default class App extends Component {
   state = {
     places: []
-  }
+  };
 
   placeAddedHandler = placeName => {
     this.setState(prevState => {
       return {
         places: prevState.places.concat(placeName)
-      }
+      };
     });
   };
 
@@ -29,7 +21,7 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
         <PlaceInput onPlaceAdded={this.placeAddedHandler} />
-        <ListItem places={this.state.places} />
+        <PlaceList places={this.state.places} />
       </View>
     );
   }
@@ -38,15 +30,10 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 35,
-    paddingLeft: 20,
-    paddingRight: 20,
-    backgroundColor: '#F5FCFF',
-    justifyContent: 'flex-start',
+    paddingTop: 30,
+    padding: 26,
+    backgroundColor: "#fff",
     alignItems: "center",
-  },
-
-  listContainer: {
-    width: '100%'
+    justifyContent: "flex-start"
   }
 });
