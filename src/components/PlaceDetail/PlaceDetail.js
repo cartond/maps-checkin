@@ -1,25 +1,28 @@
-import React from 'react';
-import { Modal, View, Image, Text, Button, StyleSheet } from 'react-native';
+import React from "react";
+import { Modal, View, Image, Text, Button, StyleSheet } from "react-native";
 
 const placeDetail = props => {
   let modalContent = null;
 
-  if (props.selectedPlace){
+  if (props.selectedPlace) {
     modalContent = (
       <View>
-        <Image source={props.selectedPlace.image} style={styles.placeImage}/>
+        <Image source={props.selectedPlace.image} style={styles.placeImage} />
         <Text style={styles.placeName}>{props.selectedPlace.name}</Text>
       </View>
     );
   }
-
-  return(
-    <Modal onRequestClose={props.onModalClosed} visible={!!props.selectedPlace} animationType="slide">
+  return (
+    <Modal
+      onRequestClose={props.onModalClosed}
+      visible={props.selectedPlace !== null}
+      animationType="slide"
+    >
       <View style={styles.modalContainer}>
         {modalContent}
-        <View style={styles.buttonContainer}>
-          <Button title="Delete" color="red" onPress={props.onItemDeleted}/>
-          <Button title="Close" onPress={props.onModalClosed}/>
+        <View>
+          <Button title="Delete" color="red" onPress={props.onItemDeleted} />
+          <Button title="Close" onPress={props.onModalClosed} />
         </View>
       </View>
     </Modal>
@@ -28,27 +31,17 @@ const placeDetail = props => {
 
 const styles = StyleSheet.create({
   modalContainer: {
-    paddingTop: 30,
-    alignItems: "center",
-    height: '100%'
+    margin: 22
   },
-
-  buttonContainer: {
-    // justifyContent: "flex-end",
-    flexDirection: "row"
-  },
-
   placeImage: {
-    width: '100%',
+    width: "100%",
     height: 200
   },
-
   placeName: {
     fontWeight: "bold",
     textAlign: "center",
-    fontSize: 24
+    fontSize: 28
   }
-})
-
+});
 
 export default placeDetail;
