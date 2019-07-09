@@ -11,8 +11,9 @@ export default class App extends Component {
 
   placeAddedHandler = placeName => {
     this.setState(prevState => {
+      // Using math.random for demo purposes
       return {
-        places: prevState.places.concat(placeName)
+        places: prevState.places.concat({key: Math.random(), value: placeName})
       };
     });
   };
@@ -21,7 +22,7 @@ export default class App extends Component {
     this.setState(prevState => {
       return {
         places: prevState.places.filter((place, i) => {
-          return i !== index
+          return place.key !== index
         })
       }
     })
