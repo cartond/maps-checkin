@@ -7,7 +7,7 @@ const placeDetail = props => {
   if (props.selectedPlace) {
     modalContent = (
       <View>
-        <Image source={props.selectedPlace.image} style={styles.placeImage} />
+        <Image source={props.selectedPlace.image} style={styles.placeImage}/>
         <Text style={styles.placeName}>{props.selectedPlace.name}</Text>
       </View>
     );
@@ -31,7 +31,8 @@ const placeDetail = props => {
 
 const styles = StyleSheet.create({
   modalContainer: {
-    margin: 22
+    margin: 22,
+    marginTop: 36
   },
   placeImage: {
     width: "100%",
