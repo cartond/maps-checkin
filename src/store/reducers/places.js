@@ -37,7 +37,7 @@ const reducer = (state = initialState, action) => {
     case DESELECT_PLACE:
       return {
         ...state,
-        selectPlace: null
+        selectedPlace: null
       };
 
     default:
