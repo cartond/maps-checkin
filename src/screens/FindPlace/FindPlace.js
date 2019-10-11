@@ -21,6 +21,7 @@ class FindPlaceScreen extends Component {
   render () {
     return (
       <View>
+        Find:
         <PlaceList places={this.props.places} onItemSelected={this.itemSelectedHandler}/>
       </View>
     );
