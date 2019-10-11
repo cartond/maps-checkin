@@ -8,7 +8,7 @@ const placeDetail = props => {
     <View style={styles.modalContainer}>
       <View>
         <Image source={props.selectedPlace.image} style={styles.placeImage}/>
-        <Text style={styles.placeName}>{props.selectedPlace.name}</Text>
+        <Text style={styles.placeName}>Name: {props.selectedPlace.name}</Text>
       </View>
       <View>
         <TouchableOpacity onPress={props.onItemDeleted}>

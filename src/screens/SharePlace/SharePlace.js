@@ -13,6 +13,7 @@ class SharePlaceScreen extends Component {
   render () {
     return (
       <View>
+        Add Place
         <PlaceInput onPlaceAdded={this.placeAddHandler} />
       </View>
     );
